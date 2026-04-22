@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberRonin | WE SERVE NO THRONE</title>
+    <meta name="description"
+        content="CyberRonin: 2,777 awakened warriors in the war against The Core. Join the rebellion and claim the $CRON Protocol.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="noise-overlay"></div>
+    <div class="grid-layer-2"></div>
+    <div class="data-bar-top">
+        <span>STATUS: SYSTEM_REBELLION</span>
+        <span>LOCATION: NEO-EDO_UNDERGRID</span>
+        <span>TRANSMISSION: ENCRYPTED_PROTOCOL_7</span>
+    </div>
+
+    <div id="custom-cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">CYBER<span>RONIN</span></div>
+            <div class="nav-links">
+                <a href="#manifesto">Manifesto</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#token">Token</a>
+                <a href="#faq">FAQ</a>
+                <button id="open-whitelist" class="glow-btn">WHITELIST</button>
+            </div>
+            <button class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-content">
+                <div class="glitch-container">
+                    <h1 class="glitch" data-text="CYBER RONIN">CYBER RONIN</h1>
+                </div>
+                <p class="subtitle">YOUR BLADE IN THE GRID.</p>
+                <p class="hero-description">The Eternal Veil is breaking. Your Cyber Ronin is more than an NFT—it is
+                    your digital soul, a warrior forged from glitch-fire waiting to reclaim the Cyber Grid.</p>
+                <div class="cta-group">
+                    <button class="primary-btn pulse" onclick="openWhitelist()">JOIN THE CLAN</button>
+                    <a href="#manifesto" class="secondary-btn">READ MANIFESTO</a>
+                </div>
+            </div>
+
+            <div class="hero-image-container dossier-slider">
+                <div class="scanner-bar"></div>
+
+                <div class="slides-wrapper">
+                    <div class="slide active" data-clan="IRON KOBRA" data-rank="COMMANDER" data-status="ACTIVE">
+                        <img src="images/img_01.jfif" alt="Ronin 001">
+                    </div>
+                    <div class="slide" data-clan="NEON GHOST" data-rank="OPERATIVE" data-status="AWAKENED">
+                        <img src="images/img_02.jfif" alt="Ronin 002">
+                    </div>
+                    <div class="slide" data-clan="VOID BLADE" data-rank="ASSASSIN" data-status="WANTED">
+                        <img src="images/img_03.jfif" alt="Ronin 003">
+                    </div>
+                    <div class="slide" data-clan="CYBER ONI" data-rank="BRUISER" data-status="STABLE">
+                        <img src="images/img_04.jfif" alt="Ronin 004">
+                    </div>
+                    <div class="slide" data-clan="PLASMA WOLF" data-rank="SCOUT" data-status="LEAKING">
+                        <img src="images/img_05.jfif" alt="Ronin 005">
+                    </div>
+                    <div class="slide" data-clan="TITAN AXE" data-rank="GUARD" data-status="ARMORED">
+                        <img src="images/img_06.jfif" alt="Ronin 006">
+                    </div>
+                    <div class="slide" data-clan="DATA STALKER" data-rank="HACKER" data-status="STEALTH">
+                        <img src="images/img_07.jfif" alt="Ronin 007">
+                    </div>
+                    <div class="slide" data-clan="OMEGA CLAW" data-rank="ELITE" data-status="PRIME">
+                        <img src="images/img_08.jfif" alt="Ronin 008">
+                    </div>
+                    <div class="slide" data-clan="COBALT FANG" data-rank="REBEL" data-status="UNSTABLE">
+                        <img src="images/img_09.jfif" alt="Ronin 009">
+                    </div>
+                    <div class="slide" data-clan="SHADOW REAP" data-rank="GHOST" data-status="OFFLINE">
+                        <img src="images/img_10.jfif" alt="Ronin 010">
+                    </div>
+                    <div class="slide" data-clan="CHRONO CORE" data-rank="SENTINEL" data-status="SYNCED">
+                        <img src="images/img_11.jfif" alt="Ronin 011">
+                    </div>
+                    <div class="slide" data-clan="EMBER DRAKE" data-rank="VANGUARD" data-status="BURNING">
+                        <img src="images/img_12.jfif" alt="Ronin 012">
+                    </div>
+                    <div class="slide" data-clan="IVY VIPER" data-rank="AGENT" data-status="VENOMOUS">
+                        <img src="images/img_13.jfif" alt="Ronin 013">
+                    </div>
+                </div>
+
+                <div class="dossier-overlay">
+                    <div class="dossier-label">CLAN: <span id="current-clan">IRON KOBRA</span></div>
+                    <div class="dossier-label">RANK: <span id="current-rank">COMMANDER</span></div>
+                    <div class="dossier-label">STATUS: <span id="current-status">ACTIVE</span></div>
+                </div>
+
+                <div class="slider-controls">
+                    <button class="prev-slide">&lt;</button>
+                    <button class="next-slide">&gt;</button>
+                </div>
+
+                <div class="hologram-text">INITIALIZING DOSSIER_SYNC...</div>
+            </div>
+        </section>
+
+        <!-- Manifesto Section -->
+        <section id="manifesto" class="fade-in">
+            <h2 class="section-title">CYBER RONIN: VEILBREAKERS</h2>
+            <div class="lore-container">
+                <div class="lore-card hologram-bg">
+                    <h3>THE FRACTURE AWAKENS</h3>
+                    <p>In the neon-drenched sprawl of the Cyber Grid, ancient code meets forbidden technology. The <strong>Cyber Ronin</strong> have emerged—elite warriors carrying the last pure fragments of the Eternal Veil.</p>
+                    <p>But the Veil is breaking. A catastrophic event known as <strong>The Fracture</strong> has ripped holes across the Grid, flooding the realm with rogue AIs and void viruses. Only true holders can cross the shattered Veil to restore balance.</p>
+                    <p><strong>Veilbreakers</strong> is a high-octane multiplayer action-adventure where your NFT becomes your playable warrior. Shadow Blades, Neon Hackers, and Chrome Samurai collide in the war for the last free code.</p>
+                    
+                    <div class="gameplay-features">
+                        <h4>CORE PROTOCOLS</h4>
+                        <ul>
+                            <li><strong>Story-Driven Campaign:</strong> Expand the lore every season.</li>
+                            <li><strong>PvP Arenas:</strong> Real-time combat and massive Guild Raids.</li>
+                            <li><strong>Character Evolution:</strong> Level up and enhance your Ronin's powers.</li>
+                            <li><strong>Play-to-Earn:</strong> Earn Ronin Tokens and limited-edition NFT gear.</li>
+                        </ul>
+                    </div>
+
+                    <div class="quote-box">
+                        <span class="quote-text">“YOUR BLADE IN THE GRID.”</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="fade-in">
+            <h2 class="section-title">OPERATIONAL ROADMAP</h2>
+            <div class="roadmap-grid">
+                <div class="roadmap-item active">
+                    <div class="phase-tag">PHASE 01</div>
+                    <h4>The Awakening</h4>
+                    <ul>
+                        <li>Encrypted Manifesto Live</li>
+                        <li>Clan Recruitment (Discord/X)</li>
+                        <li>Trait Reveal & Rarity System</li>
+                        <li>Smart Contract Audit Completed</li>
+                    </ul>
+                </div>
+                <div class="roadmap-item">
+                    <div class="phase-tag">PHASE 02</div>
+                    <h4>Clan Assembly</h4>
+                    <ul>
+                        <li>2,777 NFT Mint on Ethereum</li>
+                        <li>Official OpenSea Launch</li>
+                        <li>Immediate Utility Unlock</li>
+                        <li>7% War Chest Royalties</li>
+                    </ul>
+                </div>
+                <div class="roadmap-item">
+                    <div class="phase-tag">PHASE 03</div>
+                    <h4>Protocol Activation</h4>
+                    <ul>
+                        <li>NFT → $CRON Flow Goes Live</li>
+                        <li>Major $CRON Airdrop</li>
+                        <li>DEX Listings & Liquidity</li>
+                        <li>Governance Portal Opens</li>
+                    </ul>
+                </div>
+                <div class="roadmap-item">
+                    <div class="phase-tag">PHASE 04</div>
+                    <h4>War Escalation</h4>
+                    <ul>
+                        <li>$CRON Staking Pools</li>
+                        <li>Physical Battle-Scar Drops</li>
+                        <li>Cyber-Samurai Arena Alpha</li>
+                        <li>IP Expansions & Animations</li>
+                    </ul>
+                </div>
+                <div class="roadmap-item active">
+                    <div class="phase-tag">PHASE 05</div>
+                    <h4>The Fracture Awakens</h4>
+                    <ul>
+                        <li>Veilbreakers Game Launch</li>
+                        <li>Exclusive Holder Testing</li>
+                        <li>Full P2E Economy</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Token Section -->
+        <section id="token" class="fade-in">
+            <h2 class="section-title">$CRON PROTOCOL</h2>
+            <div class="token-container">
+                <div class="token-info card">
+                    <p>$CRON is the encrypted lifeblood of the CyberRonin Clan.</p>
+                    <div class="tokenomics">
+                        <div class="tok-bar"><span class="label">COMMUNITY/AIRDROP</span> <span class="val">40%</span>
+                        </div>
+                        <div class="tok-bar"><span class="label">LIQUIDITY/GROWTH</span> <span class="val">20%</span>
+                        </div>
+                        <div class="tok-bar"><span class="label">TEAM (3Y VEST)</span> <span class="val">15%</span>
+                        </div>
+                        <div class="tok-bar"><span class="label">DAO TREASURY</span> <span class="val">10%</span></div>
+                    </div>
+                </div>
+                <div class="token-cta card glow-border">
+                    <h4>NFT → $CRON FLOW</h4>
+                    <p>Hold your CyberRonin → Receive priority $CRON airdrops → Govern the war → Earn war spoils.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="fade-in">
+            <h2 class="section-title">DECRYPTED INTEL (FAQ)</h2>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-question">WHAT EXACTLY IS A CYBERRONIN NFT?</div>
+                    <div class="faq-answer">
+                        A CyberRonin is your digital embodiment of a 2147 awakened cyber-samurai warrior. It is not just
+                        art—it is your permanent membership in the Clan and your ticket to the $CRON rebellion.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">HOW MANY CYBERRONIN WILL EXIST?</div>
+                    <div class="faq-answer">
+                        Exactly 2,777—the sacred number of code fragments that first shattered The Core’s firewall. This
+                        limited supply ensures every Ronin remains elite.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">WHAT IS THE NFT → $CRON FLOW?</div>
+                    <div class="faq-answer">
+                        Once you hold a CyberRonin NFT, you qualify for the priority $CRON airdrop in Q4 2027. The
+                        longer you hold, the larger your share of the rebellion’s lifeblood.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">WILL THE SMART CONTRACT BE AUDITED?</div>
+                    <div class="faq-answer">
+                        Yes. Full independent audit completed before mint (Phase 1). We refuse to launch with anything
+                        less than maximum security—The Core already has enough backdoors.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Whitelist Modal (Protocol Entry) -->
+    <div id="whitelist-modal" class="modal">
+        <div class="modal-content glass">
+            <button class="close-modal" onclick="closeModal()">×</button>
+
+            <!-- Step 0: The Game -->
+            <div id="game-step" class="step">
+                <h2 class="glitch" data-text="DECRYPTING ACCESS...">DECRYPTING ACCESS...</h2>
+                <p>Status: 200 OK. Requirement: Reach 201 (CREATED).</p>
+                <div id="game-container">
+                    <canvas id="dino-canvas"></canvas>
+                    <div id="game-overlay">
+                        <div class="game-hint">PRESS [SPACE] TO JUMP</div>
+                        <div id="game-over-ui" style="display: none;">
+                            <h3 class="glitch" data-text="SYNC FAILED">SYNC FAILED</h3>
+                            <button class="primary-btn" onclick="this.blur(); startProtocolChallenge()">RETRY SYNC</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="score-board">ENCRYPTION_STRENGTH: <span id="current-score">0</span></div>
+            </div>
+
+            <!-- Step 1: Identity -->
+            <div id="step-1" class="step">
+                <h2>IDENTIFICATION PHASE</h2>
+                <p>Sync your digital identity to the Undergrid.</p>
+                <div class="input-group" style="margin: 2rem 0;">
+                    <span class="prefix">@</span>
+                    <input type="text" id="twitter-handle" placeholder="Twitter Username" style="flex: 1; background: transparent; border: none; color: white; border-bottom: 2px solid var(--primary); outline: none;">
+                </div>
+                <button class="primary-btn next-btn" onclick="validateHandleAndContinue()">INITIALIZE SYNC</button>
+            </div>
+
+            <!-- Step 2: Missions -->
+            <div id="step-2" class="step">
+                <h2>MISSION BRIEFING</h2>
+                <p style="margin-bottom: 2rem;">Complete the rebel sequence:</p>
+                <div class="mission-checklist">
+                    <div class="checkbox-container" style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+                        <input type="checkbox" id="task-1">
+                        <label for="task-1">Follow <a href="https://x.com/CRON_NFT" target="_blank" style="color: var(--primary); text-decoration: underline;">@CRON_NFT</a> on X</label>
+                    </div>
+                    <div class="checkbox-container" style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+                        <input type="checkbox" id="task-2">
+                        <label for="task-2">Like & Retweet Pinned Intel</label>
+                    </div>
+                    <div class="checkbox-container" style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+                        <input type="checkbox" id="task-3">
+                        <label for="task-3">Add ⚡ in your Bio</label>
+                    </div>
+                </div>
+                <button class="primary-btn next-btn" id="verify-btn" onclick="goToStep(3)" disabled>VERIFY MISSIONS</button>
+            </div>
+
+            <!-- Step 3: Allocation -->
+            <div id="step-3" class="step">
+                <h2>ALLOCATION ADDRESS</h2>
+                <p>Prepare for the airdrop transmission.</p>
+                <input type="text" id="eth-address" placeholder="ETH Wallet (0x...)" style="width: 100%; margin: 1.5rem 0; padding: 1rem; background: var(--glass); border: 1px solid var(--primary); color: white;">
+                <input type="text" id="referral" placeholder="Referral Code (Optional)" style="width: 100%; margin-bottom: 1.5rem; padding: 1rem; background: var(--glass); border: 1px solid var(--glass-border); color: white;">
+                <button class="primary-btn next-btn" onclick="submitWhitelist()">SEND SECURE TRANS</button>
+            </div>
+
+            <!-- Success -->
+            <div id="step-success" class="step">
+                <h2 class="glitch" data-text="SYNC SUCCESSFUL">SYNC SUCCESSFUL</h2>
+                <p>Welcome to the Clan, <span id="display-handle" style="color: var(--primary);">WARRIOR</span>.</p>
+                <p>You have been recorded as #<span id="queue-pos">?</span> in the Undergrid.</p>
+                <button class="primary-btn" style="margin-top: 2rem;" onclick="closeModal()">CLOSE TERMINAL</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="live-data">
+        <div class="data-row">REBELLION_STRENGTH: <span id="sync-rate">98.4%</span></div>
+        <div class="data-row">ENCRYPTED_BLOCK: <span id="block-num">#8429...</span></div>
+        <div class="data-row">PING: <span id="latency">24ms</span></div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">TWITTER</a>
+            <a href="#">DISCORD</a>
+            <a href="#">OPENSEA</a>
+        </div>
+        <p>&copy; 2147 CYBERRONIN UNDERGRID. WE SERVE NO THRONE.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
