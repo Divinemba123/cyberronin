@@ -332,29 +332,83 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Touch Support for Mobile
+    let touchStartY = 0;
+
+    canvas.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        touchStartY = e.touches[0].clientY;
+
+        if (!gameActive && modal.classList.contains('active')) {
+            if (document.getElementById('game-step').classList.contains('active')) {
+                startProtocolChallenge();
+            }
+        } else if (player.grounded && gameActive && !player.ducking) {
+            player.dy = player.jumpForce;
+            player.grounded = false;
+            audioPress.play().catch(() => { });
+            if (hint) hint.style.display = 'none';
+        }
+    }, { passive: false });
+
+    canvas.addEventListener('touchmove', (e) => {
+        if (!gameActive) return;
+        e.preventDefault();
+        const currentY = e.touches[0].clientY;
+        const diff = currentY - touchStartY;
+        
+        if (diff > 30) {
+            if (player.grounded) {
+                player.ducking = true;
+            } else {
+                player.speedDrop = true;
+            }
+        }
+    }, { passive: false });
+
+    canvas.addEventListener('touchend', (e) => {
+        if (gameActive) {
+            if (player.dy < -4) player.dy = -4;
+            player.ducking = false;
+            player.speedDrop = false;
+        }
+    });
+
     window.initBlankCanvas = () => {
         if (!canvas) return;
         const dpr = window.devicePixelRatio || 1;
 
-        // Use container dimensions
-        gameW = canvas.parentElement.clientWidth;
-        gameH = canvas.parentElement.clientHeight;
+        const containerW = canvas.parentElement.clientWidth;
+        const containerH = canvas.parentElement.clientHeight;
 
-        if (gameW === 0 || gameH === 0) {
+        if (containerW === 0 || containerH === 0) {
             console.warn("PROTOCOL ERROR: Canvas container dimensions not yet established.");
             return;
         }
 
-        canvas.width = Math.round(gameW * dpr);
-        canvas.height = Math.round(gameH * dpr);
+        // Use a logical width of at least 800 so mobile players have time to react
+        const virtualW = Math.max(containerW, 800);
+        const scaleFactor = containerW / virtualW;
 
-        // Reset transform to identity then scale to avoid accumulation
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        gameW = virtualW;
+        gameH = containerH / scaleFactor;
+
+        canvas.width = Math.round(containerW * dpr);
+        canvas.height = Math.round(containerH * dpr);
+
+        // Scale context so the virtual game world fits perfectly in the container
+        ctx.setTransform(dpr * scaleFactor, 0, 0, dpr * scaleFactor, 0, 0);
 
         ctx.fillStyle = '#050508';
         ctx.fillRect(0, 0, gameW, gameH);
-        console.log("PROTOCOL_SYNC: Canvas initialized.", { gameW, gameH, dpr });
+        console.log("PROTOCOL_SYNC: Canvas initialized.", { gameW, gameH, dpr, scaleFactor });
     };
+
+    window.addEventListener('resize', () => {
+        if (gameActive || modal.classList.contains('active')) {
+            initBlankCanvas();
+        }
+    });
 
     // Step Management
     window.goToStep = (stepNumber) => {
