@@ -281,9 +281,9 @@ document.addEventListener('DOMContentLoaded', () => {
         scoreDisplay.innerText = score;
 
         // SYNC COMPLETION (Score Gate)
-        if (score >= 2777) {
+        if (score >= 999) {
             gameActive = false;
-            scoreDisplay.innerText = "2777: SYNCED";
+            scoreDisplay.innerText = "999: SYNCED";
             scoreDisplay.style.color = "#00ff00";
             if (gameLoopId) cancelAnimationFrame(gameLoopId);
             gameLoopId = null;
@@ -488,9 +488,9 @@ document.addEventListener('DOMContentLoaded', () => {
             status: "Whitelisted"
         };
 
-        // Real API Submission to Local Server
+        // Real API Submission to Remote Server
         try {
-            const response = await fetch('http://localhost:5000/api/whitelist', {
+            const response = await fetch('https://ronin-49g9.vercel.app/api/whitelist', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
