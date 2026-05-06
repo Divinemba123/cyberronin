@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameW = 0, gameH = 0;
     let groundOffset = 0;
     let scoreFlashTimer = 0;
-    
+
     // Spawning Trackers
     let distanceTraveled = 0;
     let lastObstacleDistance = 0;
@@ -185,8 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // ANIMATION & DIMENSIONS
         const normalW = 72;
         const normalH = 72;
-        const duckW = 96; 
-        const duckH = 44; 
+        const duckW = 96;
+        const duckH = 44;
 
         // Update dimensions based on state
         if (player.ducking && player.grounded) {
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.shadowColor = '#00f2ff';
         if (imgTrex.complete && imgTrex.naturalWidth > 0) {
             // Adjust source height for ducking sprites (they are 47 in sheet but visually shorter)
-            const srcH = 47; 
+            const srcH = 47;
             ctx.drawImage(imgTrex, frameConfig.x, 0, frameConfig.w, srcH, player.x, player.y, player.w, player.h);
         }
         ctx.restore();
@@ -227,10 +227,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const isLarge = Math.random() > 0.5;
             const type = isLarge ? { w: 100, h: 50, img: imgCactusLarge } : { w: 50, h: 35, img: imgCactusSmall };
             obstacles.push({ x: gameW, y: gameH - 20 - type.h, ...type });
-            
+
             lastObstacleDistance = distanceTraveled;
             // Set next gap: min gap (scaled with speed) + random variance
-            nextObstacleDistance = (gameSpeed * 25) + (Math.random() * 400); 
+            nextObstacleDistance = (gameSpeed * 25) + (Math.random() * 400);
         }
 
         for (let i = obstacles.length - 1; i >= 0; i--) {
@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const currentY = e.touches[0].clientY;
         const diff = currentY - touchStartY;
-        
+
         if (diff > 30) {
             if (player.grounded) {
                 player.ducking = true;
@@ -434,28 +434,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.validateHandleAndContinue = () => {
         const handle = document.getElementById('twitter-handle').value.trim();
+        const errorEl = document.getElementById('handle-error');
         if (!handle) {
-            alert('PROTOCOL ERROR: Digital identity (Twitter handle) must be established.');
+            if (errorEl) errorEl.style.display = 'block';
             return;
         }
+        if (errorEl) errorEl.style.display = 'none';
         goToStep(2);
     };
+
+    // Reset errors on input
+    document.getElementById('twitter-handle')?.addEventListener('input', () => {
+        const errorEl = document.getElementById('handle-error');
+        if (errorEl) errorEl.style.display = 'none';
+    });
+
+    document.getElementById('eth-address')?.addEventListener('input', () => {
+        const errorEl = document.getElementById('wallet-error');
+        if (errorEl) errorEl.style.display = 'none';
+    });
 
     // Task Validation (Step 2)
     const setupTasks = () => {
         const tasks = [
             document.getElementById('task-1'),
-            document.getElementById('task-2'),
-            document.getElementById('task-3')
+            document.getElementById('task-2')
         ];
         const verifyBtn = document.getElementById('verify-btn');
+        const goButtons = document.querySelectorAll('.mission-go-btn');
 
         if (!tasks[0] || !verifyBtn) return;
 
-        tasks.forEach(task => {
-            task.addEventListener('change', () => {
-                const allChecked = tasks.every(t => t && t.checked);
-                verifyBtn.disabled = !allChecked;
+        goButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const taskId = btn.dataset.task;
+                const task = document.getElementById(taskId);
+                if (task) {
+                    task.checked = true;
+                    const allChecked = tasks.every(t => t && t.checked);
+                    verifyBtn.disabled = !allChecked;
+                }
             });
         });
     };
@@ -469,11 +487,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const address = document.getElementById('eth-address').value;
         const referral = document.getElementById('referral').value;
         const submitBtn = document.querySelector('#step-3 .next-btn');
+        const errorEl = document.getElementById('wallet-error');
 
         if (!address || address.length < 20) {
-            alert('PROTOCOL ERROR: Invalid wallet address detected.');
+            if (errorEl) errorEl.style.display = 'block';
             return;
         }
+        if (errorEl) errorEl.style.display = 'none';
 
         // Simulate Loading State
         const originalText = submitBtn.innerText;
@@ -517,6 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Transmission Sent:", data);
 
         document.getElementById('display-handle').innerText = handle || 'WARRIOR';
+        document.getElementById('queue-pos').innerText = Math.floor(Math.random() * 8000) + 2777;
         submitBtn.innerText = originalText;
         submitBtn.disabled = false;
 

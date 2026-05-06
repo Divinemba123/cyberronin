@@ -297,10 +297,11 @@
             <div id="step-1" class="step">
                 <h2>IDENTIFICATION PHASE</h2>
                 <p>Sync your digital identity to the Undergrid.</p>
-                <div class="input-group" style="margin: 2rem 0;">
+                <div class="input-group" style="margin: 2rem 0 0.5rem 0;">
                     <span class="prefix">@</span>
                     <input type="text" id="twitter-handle" placeholder="Twitter Username" style="flex: 1; background: transparent; border: none; color: white; border-bottom: 2px solid var(--primary); outline: none;">
                 </div>
+                <div id="handle-error" class="error-msg" style="display: none; color: #ff0055; font-family: 'Orbitron', sans-serif; font-size: 0.6rem; margin-bottom: 1.5rem; letter-spacing: 1px;">// ERROR: IDENTITY_NOT_FOUND</div>
                 <button class="primary-btn next-btn" onclick="validateHandleAndContinue()">INITIALIZE SYNC</button>
             </div>
 
@@ -309,17 +310,21 @@
                 <h2>MISSION BRIEFING</h2>
                 <p style="margin-bottom: 2rem;">Complete the rebel sequence:</p>
                 <div class="mission-checklist">
-                    <div class="checkbox-container" style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
-                        <input type="checkbox" id="task-1">
-                        <label for="task-1">Follow <a href="https://x.com/CRON_NFT" target="_blank" style="color: var(--primary); text-decoration: underline;">@CRON_NFT</a> on X</label>
+                    <div class="mission-item">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="task-1" disabled>
+                            <span class="checkmark"></span>
+                            <label for="task-1">Follow @CRON_NFT on X</label>
+                        </div>
+                        <a href="https://x.com/CRON_NFT" target="_blank" class="primary-btn mission-go-btn" data-task="task-1">GO</a>
                     </div>
-                    <div class="checkbox-container" style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
-                        <input type="checkbox" id="task-2">
-                        <label for="task-2">Like & Retweet Pinned Intel</label>
-                    </div>
-                    <div class="checkbox-container" style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
-                        <input type="checkbox" id="task-3">
-                        <label for="task-3">Add ⚡ in your Bio</label>
+                    <div class="mission-item">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="task-2" disabled>
+                            <span class="checkmark"></span>
+                            <label for="task-2">Like & Retweet Pinned Intel</label>
+                        </div>
+                        <a href="https://x.com/CRON_NFT/status/2047230813243142166?s=20" target="_blank" class="primary-btn mission-go-btn" data-task="task-2">GO</a>
                     </div>
                 </div>
                 <button class="primary-btn next-btn" id="verify-btn" onclick="goToStep(3)" disabled>VERIFY MISSIONS</button>
@@ -329,7 +334,8 @@
             <div id="step-3" class="step">
                 <h2>ALLOCATION ADDRESS</h2>
                 <p>Prepare for the airdrop transmission.</p>
-                <input type="text" id="eth-address" placeholder="ETH Wallet (0x...)" style="width: 100%; margin: 1.5rem 0; padding: 1rem; background: var(--glass); border: 1px solid var(--primary); color: white;">
+                <input type="text" id="eth-address" placeholder="ETH Wallet (0x...)" style="width: 100%; margin: 1.5rem 0 0.5rem 0; padding: 1rem; background: var(--glass); border: 1px solid var(--primary); color: white;">
+                <div id="wallet-error" class="error-msg" style="display: none; color: #ff0055; font-family: 'Orbitron', sans-serif; font-size: 0.6rem; margin-bottom: 1rem; letter-spacing: 1px;">// ERROR: INVALID_ALLOCATION_ADDRESS</div>
                 <input type="text" id="referral" placeholder="Referral Code (Optional)" style="width: 100%; margin-bottom: 1.5rem; padding: 1rem; background: var(--glass); border: 1px solid var(--glass-border); color: white;">
                 <button class="primary-btn next-btn" onclick="submitWhitelist()">SEND SECURE TRANS</button>
             </div>

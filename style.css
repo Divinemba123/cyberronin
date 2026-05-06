@@ -1152,12 +1152,39 @@ input {
     border: 1px solid var(--glass-border);
 }
 
+.mission-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: var(--glass);
+    padding: 1rem;
+    border: 1px solid var(--glass-border);
+    margin-bottom: 1.5rem;
+}
+
+.mission-item:last-child {
+    margin-bottom: 2rem;
+}
+
+.mission-go-btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.7rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.mission-item .checkbox-container {
+    margin-bottom: 0;
+}
+
 .checkbox-container {
     display: flex;
     align-items: center;
-    cursor: none;
+    cursor: pointer;
     position: relative;
     padding-left: 35px;
+    margin-bottom: 1rem;
 }
 
 .checkbox-container input {
@@ -1170,12 +1197,18 @@ input {
 
 .checkmark {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
+    transform: translateY(-50%);
     height: 20px;
     width: 20px;
     background-color: transparent;
     border: 1px solid var(--primary);
+}
+
+.error-msg {
+    text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+    animation: blink 2s infinite;
 }
 
 .checkbox-container:hover input~.checkmark {
