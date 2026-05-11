@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.openWhitelist = () => {
         modal.classList.add('active');
-        startProtocolChallenge();
+        goToStep('closed');
     };
 
     const closeModal = () => {

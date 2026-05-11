@@ -40,7 +40,7 @@
                 <a href="#roadmap">Roadmap</a>
                 <a href="#token">Token</a>
                 <a href="#faq">FAQ</a>
-                <button id="open-whitelist" class="glow-btn">WHITELIST</button>
+                <button id="open-whitelist" class="glow-btn" style="border-color: #ff0055; color: #ff0055;">WHITELIST CLOSED</button>
             </div>
             <button class="menu-toggle" id="menu-toggle">
                 <span></span>
@@ -60,7 +60,7 @@
                 <p class="hero-description">The Eternal Veil is breaking. Your Cyber Ronin is more than an NFT-it is
                     your digital soul, a warrior forged from glitch-fire waiting to reclaim the Cyber Grid.</p>
                 <div class="cta-group">
-                    <button class="primary-btn pulse" onclick="openWhitelist()">JOIN THE CLAN</button>
+                    <button class="primary-btn pulse" style="background: #ff0055; color: white;" onclick="openWhitelist()">WHITELIST CLOSED</button>
                     <a href="#manifesto" class="secondary-btn">READ MANIFESTO</a>
                 </div>
             </div>
@@ -338,6 +338,29 @@
                 <div id="wallet-error" class="error-msg" style="display: none; color: #ff0055; font-family: 'Orbitron', sans-serif; font-size: 0.6rem; margin-bottom: 1rem; letter-spacing: 1px;">// ERROR: INVALID_ALLOCATION_ADDRESS</div>
                 <input type="text" id="referral" placeholder="Referral Code (Optional)" style="width: 100%; margin-bottom: 1.5rem; padding: 1rem; background: var(--glass); border: 1px solid var(--glass-border); color: white;">
                 <button class="primary-btn next-btn" onclick="submitWhitelist()">SEND SECURE TRANS</button>
+            </div>
+
+            <!-- Whitelisting Closed -->
+            <div id="step-closed" class="step">
+                <h2 class="glitch" data-text="ACCESS RESTRICTED">ACCESS RESTRICTED</h2>
+                <div class="closed-banner">
+                    <p class="status-alert">// TEMPORARY WHITELISTING HAS BEEN CLOSED</p>
+                </div>
+                <p class="closed-description">The Undergrid has reached maximum neural capacity. Our encryption protocols are currently locked to stabilize the current rebellion strength.</p>
+                
+                <div class="mission-checklist" style="margin-top: 2rem; border-color: #ff005533;">
+                    <div class="mission-item" style="border-bottom: 1px solid #ff005522; padding-bottom: 1rem;">
+                        <span style="color: #ff0055; font-family: 'Orbitron', sans-serif; font-size: 0.7rem; letter-spacing: 2px;">REASON: SYSTEM_OVERLOAD</span>
+                    </div>
+                    <div class="mission-item" style="padding-top: 1rem;">
+                        <span style="color: var(--text-dim); font-size: 0.8rem;">Monitor our X (Twitter) and Discord for the next available breach window. The Fracture is unpredictable.</span>
+                    </div>
+                </div>
+
+                <div style="font-size: 0.8rem; opacity: 0.5; margin-top: 2rem; border-top: 1px solid #ff005544; padding-top: 1rem; font-family: 'Orbitron', sans-serif;">
+                    STATUS: <span style="color: #ff0055;">ENCRYPTION_LOCKED</span> | ERROR_CODE: 403_FORBIDDEN
+                </div>
+                <button class="primary-btn" style="margin-top: 2rem; background: #ff0055; color: white; border: none; box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);" onclick="closeModal()">RETURN TO THE GRID</button>
             </div>
 
             <!-- Success -->
